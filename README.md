@@ -10,7 +10,7 @@
 [![Member project of .NET Core Community](https://img.shields.io/badge/member%20project%20of-NCC-9e20c9.svg)](https://github.com/dotnetcore)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dotnetcore/CAP/master/LICENSE.txt)
 
-CAP is a library based on the .Net Standard - a solution to deal with distributed transactions, it also has the function of EventBus. It is lightweight, easy to use, and efficient.
+CAP is a library based on the .Net Standard - a solution to deal with distributed transactions, with the functionality of EventBus. It is lightweight, easy to use, and efficient.
 
 In the process of building a SOA or MicroService system, we usually need to use events to integrate services. In the process, the simple use of a message queue does not guarantee reliability. CAP has adopted the local message table program integrated with the a current database to solve the issue of an exception occuring in the process of the distributed system calling each other. It can ensure that the event messages are not lost in any case.
 
@@ -195,7 +195,7 @@ The concept of a subscription group is similar to that of a consumer group in Ka
 When CAP startup, it will use the current assembly name as the default group name. If multiple same group subscribers subscribe the same topic name, then only one subscriber can receive the message.
 Conversely, if subscribers are in different groups, they will all receive messages.
 
-In the same application, you can specify the `Group` property to keep they are in different subscribe groups:
+In the same application, you can specify the `Group` property to indicate they are in different subscription groups:
 
 ```C#
 
