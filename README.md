@@ -10,11 +10,11 @@
 [![Member project of .NET Core Community](https://img.shields.io/badge/member%20project%20of-NCC-9e20c9.svg)](https://github.com/dotnetcore)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dotnetcore/CAP/master/LICENSE.txt)
 
-CAP is a library based on .Net standard, which is a solution to deal with distributed transactions, also has the function of EventBus, it is lightweight, easy to use, and efficiently.
+CAP is a library based on the .Net Standard - a solution to deal with distributed transactions, it also has the function of EventBus. It is lightweight, easy to use, and efficient.
 
-In the process of building an SOA or MicroService system, we usually need to use the event to integrate each services. In the process, the simple use of message queue does not guarantee the reliability. CAP is adopted the local message table program integrated with the current database to solve the exception may occur in the process of the distributed system calling each other. It can ensure that the event messages are not lost in any case.
+In the process of building a SOA or MicroService system, we usually need to use events to integrate services. In the process, the simple use of a message queue does not guarantee reliability. CAP has adopted the local message table program integrated with the a current database to solve the issue of an exception occuring in the process of the distributed system calling each other. It can ensure that the event messages are not lost in any case.
 
-You can also use the CAP as an EventBus. The CAP provides a simpler way to implement event publishing and subscriptions. You do not need to inherit or implement any interface during the process of subscription and sending.
+You can also use the CAP library as an EventBus. The CAP provides a simpler way to implement event publishing and subscriptions. You do not need to inherit or implement any interface during the process of subscription and sending.
 
 ## Architecture overview
 
@@ -26,13 +26,13 @@ You can also use the CAP as an EventBus. The CAP provides a simpler way to imple
 
 ### NuGet
 
-You can run the following command to install the CAP in your project.
+You can run the following command to install the CAP library in your project.
 
 ```
 PM> Install-Package DotNetCore.CAP
 ```
 
-CAP supports RabbitMQ,Kafka and AzureService as message queue, select the packages you need to install:
+CAP supports RabbitMQ, Kafka and AzureService as message queue. Select the packages you need to install:
 
 ```
 PM> Install-Package DotNetCore.CAP.Kafka
@@ -53,7 +53,7 @@ PM> Install-Package DotNetCore.CAP.MongoDB     //need MongoDB 4.0+ cluster
 
 ### Configuration
 
-First,You need to config CAP in your Startup.cs：
+First, you need to config CAP in your Startup.cs：
 
 ```cs
 public void ConfigureServices(IServiceCollection services)
@@ -151,7 +151,7 @@ public class PublishController : Controller
 
 **In Business Logic Service**
 
-If your subscribe method is not in the Controller,then your subscribe class need to Inheritance `ICapSubscribe`:
+If your subscribe method is not in the Controller, then your subscribe class needs to inherit `ICapSubscribe`:
 
 ```c#
 
@@ -173,7 +173,7 @@ namespace BusinessCode.Service
 
 ```
 
-Then inject your  `ISubscriberService`  class in Startup.cs
+Then inject your `ISubscriberService` class in Startup.cs
 
 ```c#
 public void ConfigureServices(IServiceCollection services)
@@ -190,9 +190,9 @@ public void ConfigureServices(IServiceCollection services)
 
 #### Subscribe Group
 
-The concept of a subscription group is similar to that of a consumer group in Kafka. it is the same as the broadcast mode in the message queue, which is used to process the same message between multiple different microservice instances.
+The concept of a subscription group is similar to that of a consumer group in Kafka. It is the same as the broadcast mode in the message queue, which is used to process the same message between multiple different microservice instances.
 
-When CAP startup, it will use the current assembly name as the default group name, if multiple same group subscribers subscribe the same topic name, there is only one subscriber can receive the message.
+When CAP startup, it will use the current assembly name as the default group name. If multiple same group subscribers subscribe the same topic name, then only one subscriber can receive the message.
 Conversely, if subscribers are in different groups, they will all receive messages.
 
 In the same application, you can specify the `Group` property to keep they are in different subscribe groups:
@@ -224,9 +224,9 @@ services.AddCap(x =>
 
 ### Dashboard
 
-CAP v2.1+ provides the dashboard pages, you can easily view the sent and received messages. In addition, you can also view the  message status in real time on the dashboard.
+CAP v2.1+ provides the dashboard pages, where you can easily view sent and received messages. In addition, you can also view the message status in real time on the dashboard.
 
-In the distributed environment, the dashboard built-in integrated [Consul](http://consul.io) as a node discovery, while the realization of the gateway agent function, you can also easily view the node or other node data, It's like you are visiting local resources.
+In a distributed environment, the dashboard includes integrated [Consul](http://consul.io) as node discovery, while the realization of the gateway agent function, you can also easily view the node or other node data, It's like you are visiting local resources.
 
 ```c#
 services.AddCap(x =>
@@ -249,7 +249,7 @@ services.AddCap(x =>
 });
 ```
 
-The default dashboard address is :[http://localhost:xxx/cap](http://localhost:xxx/cap) , you can also change the `cap` suffix to others with `d.MatchPath` configuration options.
+The default dashboard address is :[http://localhost:xxx/cap](http://localhost:xxx/cap), you can also change the `cap` suffix to others with `d.MatchPath` configuration options.
 
 ![dashboard](http://images2017.cnblogs.com/blog/250417/201710/250417-20171004220827302-189215107.png)
 
